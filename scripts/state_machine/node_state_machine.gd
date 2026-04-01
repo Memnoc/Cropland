@@ -78,6 +78,7 @@ func _physics_process(delta: float) -> void:
 		# Order matters: checking conditions before physics would read stale values from
 		# the previous frame (e.g. is_on_floor() wouldn't reflect the just-resolved collision).
 		current_node_state._on_next_transitions()
+		print("Current State: ", current_node_state_name)
 
 
 # Called via the `transition` signal emitted by any active state.

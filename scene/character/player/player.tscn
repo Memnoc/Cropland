@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cnir65frxnme6"]
 
 [ext_resource type="Texture2D" uid="uid://fsekoky5tase" path="res://asset/game/characters/Basic_Charakter_Actions.png" id="1_uldb0"]
+[ext_resource type="Script" uid="uid://bt33doknqf1e4" path="res://scene/character/player/player.gd" id="1_wm5uh"]
 [ext_resource type="Texture2D" uid="uid://6n54ynkpqmt0" path="res://asset/game/characters/Basic_Charakter_Spritesheet.png" id="2_45qvi"]
 [ext_resource type="Script" uid="uid://bofixsp1gxi1w" path="res://scripts/state_machine/node_state_machine.gd" id="3_xyfg4"]
 [ext_resource type="Script" uid="uid://pdrqi46hpt82" path="res://scene/character/player/idle_state.gd" id="4_qoccl"]
@@ -394,6 +395,7 @@ animations = [{
 radius = 8.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1040720243]
+script = ExtResource("1_wm5uh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=199115585]
 position = Vector2(0, -8)
@@ -409,11 +411,10 @@ shape = SubResource("CircleShape2D_3hnmu")
 script = ExtResource("3_xyfg4")
 initial_node_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=977206081 node_paths=PackedStringArray("player", "animated_sprite_2d", "game_input_event")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=977206081 node_paths=PackedStringArray("player", "animated_sprite_2d")]
 script = ExtResource("4_qoccl")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-game_input_event = NodePath("../../GameInputEvent")
 
 [node name="Walk" type="Node" parent="StateMachine" unique_id=731291045 node_paths=PackedStringArray("player", "animated_sprite_2d")]
 script = ExtResource("5_ru6uj")

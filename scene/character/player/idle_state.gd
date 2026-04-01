@@ -1,9 +1,7 @@
 extends NodeState
 
-@export var player: CharacterBody2D
+@export var player: Player
 @export var animated_sprite_2d: AnimatedSprite2D
-
-var direction: Vector2
 
 const DIRECTION_ANIMATIONS: Dictionary = {
 	Vector2.LEFT: "idle_left",
@@ -18,8 +16,8 @@ func _on_process(_delta: float) -> void:
 
 
 func _on_physics_process(_delta: float) -> void:
-	direction = GameInputEvent.movement_input()
-	animated_sprite_2d.play(DIRECTION_ANIMATIONS.get(direction, "idle_front"))
+	GameInputEvent.movement_input()
+	animated_sprite_2d.play(DIRECTION_ANIMATIONS.get(player.player_direction, "idle_front"))
 
 
 func _on_next_transitions() -> void:
@@ -34,4 +32,4 @@ func _on_enter() -> void:
 
 
 func _on_exit() -> void:
-	pass
+	animated_sprite_2d.stop()
