@@ -18,3 +18,4 @@ tile_set = ExtResource("1_4n0bm")
 
 [node name="Player" parent="." unique_id=1040720243 instance=ExtResource("2_xictl")]
 position = Vector2(207, 158)
+current_tool = 1
