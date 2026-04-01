@@ -397,6 +397,7 @@ radius = 8.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1040720243]
 script = ExtResource("1_wm5uh")
+current_tool = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=199115585]
 position = Vector2(0, -8)
