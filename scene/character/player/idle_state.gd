@@ -18,19 +18,15 @@ func _on_process(_delta: float) -> void:
 
 
 func _on_physics_process(_delta: float) -> void:
-	direction = _get_input_direction()
+	direction = GameInputEvent.movement_input()
 	animated_sprite_2d.play(DIRECTION_ANIMATIONS.get(direction, "idle_front"))
 
-func _get_input_direction() -> Vector2:
-	var input := Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down")
-	if input == Vector2.ZERO:
-		return Vector2.ZERO
-	if abs(input.x) >= abs(input.y):
-		return Vector2(sign(input.x), 0.0)
-	return Vector2(0.0, sign(input.y))
 
 func _on_next_transitions() -> void:
-	pass
+	GameInputEvent.is_movement_input()
+	
+	if GameInputEvent.is_movement_input():
+		transition.emit("Walk")
 
 
 func _on_enter() -> void:
