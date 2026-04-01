@@ -28,6 +28,10 @@ func _on_next_transitions() -> void:
 
 	if player.current_tool == DataTypes.Tools.Axewood && GameInputEvent.use_tool():
 		transition.emit("Chopping")
+		
+	
+	if player.current_tool == DataTypes.Tools.TillGround && GameInputEvent.use_tool():
+		transition.emit("Tilling")
 
 
 func _on_enter() -> void:
