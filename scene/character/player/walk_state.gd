@@ -21,7 +21,8 @@ func _on_physics_process(_delta : float) -> void:
 	player.move_and_slide()
 
 func _on_next_transitions() -> void:
-	pass
+	if !GameInputEvent.is_movement_input():
+		transition.emit("Idle")
 
 func _on_enter() -> void:
 	pass
