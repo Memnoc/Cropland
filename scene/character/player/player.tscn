@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://ct858l8piv50j" path="res://scene/character/player/chopping_state.gd" id="7_jwhpw"]
 [ext_resource type="Script" uid="uid://dat6rp68kyeuc" path="res://scene/character/player/tilling_state.gd" id="8_barrf"]
 [ext_resource type="Script" uid="uid://bby2opbftigud" path="res://scene/character/player/watering_state.gd" id="9_hedvu"]
+[ext_resource type="PackedScene" uid="uid://c3atmri7mu4he" path="res://scene/components/hit_component.tscn" id="11_g5q37"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyfg4"]
 atlas = ExtResource("1_uldb0")
@@ -395,7 +396,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3hnmu"]
-radius = 8.0
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5q37"]
+radius = 2.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1040720243]
 script = ExtResource("1_wm5uh")
@@ -404,11 +408,11 @@ current_tool = 3
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=199115585]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_qjk2c")
-animation = &"watering_right"
+animation = &"idle_front"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=366585231]
-position = Vector2(0, -8)
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_3hnmu")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1205994697 node_paths=PackedStringArray("initial_node_state")]
@@ -443,3 +447,9 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 [node name="GameInputEvent" type="Node" parent="." unique_id=28609770]
 script = ExtResource("5_qoccl")
 metadata/_custom_type_script = "uid://deewptp7a47jb"
+
+[node name="HitComponent" parent="." unique_id=798891763 instance=ExtResource("11_g5q37")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent" unique_id=1465694536]
+shape = SubResource("CircleShape2D_g5q37")
+debug_color = Color(0.88966906, 0.21718338, 0.61380637, 0.41960785)
