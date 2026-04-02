@@ -33,6 +33,9 @@ func _on_next_transitions() -> void:
 	if player.current_tool == DataTypes.Tools.TillGround && GameInputEvent.use_tool():
 		transition.emit("Tilling")
 
+	if player.current_tool == DataTypes.Tools.WaterCrops && GameInputEvent.use_tool():
+		transition.emit("Watering")
+
 
 func _on_enter() -> void:
 	pass

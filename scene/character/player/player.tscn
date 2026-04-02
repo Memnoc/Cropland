@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bbsnd1fjr8o0j" path="res://scene/character/player/walk_state.gd" id="5_ru6uj"]
 [ext_resource type="Script" uid="uid://ct858l8piv50j" path="res://scene/character/player/chopping_state.gd" id="7_jwhpw"]
 [ext_resource type="Script" uid="uid://dat6rp68kyeuc" path="res://scene/character/player/tilling_state.gd" id="8_barrf"]
+[ext_resource type="Script" uid="uid://bby2opbftigud" path="res://scene/character/player/watering_state.gd" id="9_hedvu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyfg4"]
 atlas = ExtResource("1_uldb0")
@@ -355,7 +356,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n4pyv")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_back",
 "speed": 3.0
 }, {
@@ -366,7 +367,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4g5pn")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_front",
 "speed": 3.0
 }, {
@@ -377,7 +378,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gcdl0")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_left",
 "speed": 3.0
 }, {
@@ -388,7 +389,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_88qg5")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_right",
 "speed": 3.0
 }]
@@ -398,12 +399,12 @@ radius = 8.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1040720243]
 script = ExtResource("1_wm5uh")
-current_tool = 2
+current_tool = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=199115585]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_qjk2c")
-animation = &"tilling_right"
+animation = &"watering_right"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=366585231]
@@ -431,6 +432,11 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="Tilling" type="Node" parent="StateMachine" unique_id=5893684 node_paths=PackedStringArray("player", "animated_sprite_2d")]
 script = ExtResource("8_barrf")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Watering" type="Node" parent="StateMachine" unique_id=881982120 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("9_hedvu")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
