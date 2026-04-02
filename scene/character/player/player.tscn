@@ -396,10 +396,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3hnmu"]
-radius = 3.0
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5q37"]
-radius = 2.0
+radius = 3.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1040720243]
 script = ExtResource("1_wm5uh")
@@ -408,8 +408,10 @@ current_tool = 3
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=199115585]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_qjk2c")
-animation = &"idle_front"
+animation = &"chopping_back"
 autoplay = "idle_front"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=366585231]
 position = Vector2(0, -5)
@@ -429,10 +431,11 @@ script = ExtResource("5_ru6uj")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Chopping" type="Node" parent="StateMachine" unique_id=1646416535 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+[node name="Chopping" type="Node" parent="StateMachine" unique_id=1646416535 node_paths=PackedStringArray("player", "animated_sprite_2d", "hit_component_collision_shape")]
 script = ExtResource("7_jwhpw")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisionShape2D")
 
 [node name="Tilling" type="Node" parent="StateMachine" unique_id=5893684 node_paths=PackedStringArray("player", "animated_sprite_2d")]
 script = ExtResource("8_barrf")
@@ -450,6 +453,6 @@ metadata/_custom_type_script = "uid://deewptp7a47jb"
 
 [node name="HitComponent" parent="." unique_id=798891763 instance=ExtResource("11_g5q37")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent" unique_id=1465694536]
+[node name="HitComponentCollisionShape2D" type="CollisionShape2D" parent="HitComponent" unique_id=1465694536]
 shape = SubResource("CircleShape2D_g5q37")
 debug_color = Color(0.88966906, 0.21718338, 0.61380637, 0.41960785)
